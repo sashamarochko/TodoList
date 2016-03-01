@@ -17,6 +17,7 @@ session_start();
      $_SESSION['id'] = $r['id'];
      $_SESSION['name'] = $r['name'];
     }
+  if(empty($_SESSION['id'])) $er = true;
   }
 ?>
 <div id="todo-lists">
@@ -93,7 +94,8 @@ if ($_POST['l'] || empty($_SESSION['id'])) {
 ?>
 	<div id="login">
 		<div class="login">Log in</div>
-		<span>Username</span>
+<?php if ($er) echo '<span style="color:red;">Wrong login or password!</span><br>';?>		
+    <span>Username</span>
 		<input type="text" name="username">
 		<span>Password</span>
 		<input type="password" name="password">
