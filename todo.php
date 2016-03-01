@@ -71,41 +71,41 @@ if($_POST['register']) {
 if($_POST['r']) {
 
 ?>
-	<div id="login">
-		<div class="login">Registration</div>
+  <div id="login">
+    <div class="login">Registration</div>
     <div id="msgf"></div>
-		<span>Username</span>
-		<input type="text" name="username">
-		<div id="msgu"></div>
+    <span>Username</span>
+    <input type="text" name="username">
+    <div id="msgu"></div>
     <span>Password</span>
-		<input type="password" name="password" onkeyup="valid()">
-		<span>Repeat Password</span>
-		<input type="password" name="password_r" onkeyup="valid()">
+    <input type="password" name="password" onkeyup="valid()">
+    <span>Repeat Password</span>
+    <input type="password" name="password_r" onkeyup="valid()">
     <div id="msg"></div>
-		<div class="btns">
-			<a href="#" class="log left" onclick="login('l');">Login</a><a href="#" class="reg big right" onclick="reg()">Register</a>
-			<div class="clear"></div>
-		</div>
-	</div>
+    <div class="btns">
+      <a href="#" class="log left" onclick="login('l');">Login</a><a href="#" class="reg big right" onclick="reg()">Register</a>
+      <div class="clear"></div>
+    </div>
+  </div>
 <?php
-	exit();
+  exit();
 }
 if ($_POST['l'] || empty($_SESSION['id'])) {
 ?>
-	<div id="login">
-		<div class="login">Log in</div>
-<?php if ($er) echo '<span style="color:red;">Wrong login or password!</span><br>';?>		
+  <div id="login">
+    <div class="login">Log in</div>
+<?php if ($er) echo '<span style="color:red;">Wrong login or password!</span><br>';?>   
     <span>Username</span>
-		<input type="text" name="username">
-		<span>Password</span>
-		<input type="password" name="password">
-		<div class="btns">
-			<a href="#" class="reg left" onclick="login('r');">Register</a><a href="#" class="log big right" onclick="login('login');">Login</a>
-			<div class="clear"></div>
-		</div>
-	</div>
+    <input type="text" name="username">
+    <span>Password</span>
+    <input type="password" name="password">
+    <div class="btns">
+      <a href="#" class="reg left" onclick="login('r');">Register</a><a href="#" class="log big right" onclick="login('login');">Login</a>
+      <div class="clear"></div>
+    </div>
+  </div>
 <?php
-	exit();
+  exit();
 }
 ?>
 <div id="header">
@@ -114,14 +114,14 @@ if ($_POST['l'] || empty($_SESSION['id'])) {
 </div>
 <?php
     $user_id = $_SESSION['id'];
-    $query = "SELECT COUNT(*) FROM users WHERE user_id = ".$user_id;
+    $query = "SELECT COUNT(*) FROM users WHERE id = ".$user_id;
     $result = mysql_query($query);
     $r = mysql_fetch_array($result);
     if (!$r[0]) session_destroy();
-  	$query = "SELECT * FROM projects WHERE user_id = ".$user_id." ORDER BY id";
-  	$result = mysql_query($query);
-  	while($r = mysql_fetch_array($result)) {
-  	$id = $r['id'];
+    $query = "SELECT * FROM projects WHERE user_id = ".$user_id." ORDER BY id";
+    $result = mysql_query($query);
+    while($r = mysql_fetch_array($result)) {
+    $id = $r['id'];
 ?>
 <div class="todo-list">
 <div class="wrap-todo-head">
